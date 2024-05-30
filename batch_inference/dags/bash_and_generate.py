@@ -50,7 +50,7 @@ def generate_cardio(input_dir):
     df.to_csv(dir_path / "cardio_data.csv")
 
 default_args = {
-    "owner": "Ksu_Antipova",
+    "owner": "Cheboksarov",
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }
