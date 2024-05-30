@@ -151,7 +151,7 @@ def metrics_to_minio(input_dir, minio, metrics_bucket):
         )
 
 default_args = {
-    "owner": "Ksu_Antipova",
+    "owner": "Cheboksarov",
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }
