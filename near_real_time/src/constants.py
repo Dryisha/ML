@@ -1,0 +1,10 @@
+FIRST_KAFKA_TOPIC = "first_topic"
+SECOND_KAFKA_TOPIC = "second_topic"
+CONSUMER_GROUP_ID = "kafka_group"
+CONSUMER_AUTORESET = "earliest"
+CONSUMER_TIMEOUT = 2000
+KAFKA_API = (0, 11, 5)
+BLOOD_LABEL = 1
+BLOOD_NAME = "blood"
+NOT_BLOOD_NAME = "not_blood"
+MODEL_NAME = "model.pkl"

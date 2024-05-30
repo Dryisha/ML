@@ -1,0 +1,43 @@
+version: '3'
+services:
+  kafka:
+    image: moeenz/docker-kafka-kraft:latest
+    container_name: kafka
+    restart: always
+    ports:
+      - "9093:9093"
+    environment:
+      - KRAFT_CONTAINER_HOST_NAME=${KAFKA_CONTAINER}
+      - KRAFT_CREATE_TOPICS=${KAFKA_TOPICS}
+      - KRAFT_PARTITIONS_PER_TOPIC=${KAFKA_PARTITIONS_PER_TOPIC}
+  ui:
+    image: provectuslabs/kafka-ui:v0.4.0
+    container_name: ui
+    ports:
+      - "8080:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=${KAFKA_SERVER}
+      - KAFKA_CLUSTERS_0_NAME=${KAFKA_CLUSTERS_0_NAME}
+  producer:
+    command: python -u producer.py
+    image: producer
+    container_name: producer
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka
+    environment:
+      - KAFKA_SERVERS=${KAFKA_SERVER}
+    restart: always
+
+  consumer:
+    command: python -u consumer.py
+    image: consumer
+    container_name: consumer
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - producer
+    environment:
+      - KAFKA_SERVERS=${KAFKA_SERVER}
+    restart: always
