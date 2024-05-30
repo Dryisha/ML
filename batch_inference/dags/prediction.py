@@ -107,7 +107,7 @@ def upload_predictions_to_minio(input_dir, minio, prediction_bucket):
 
 
 default_args = {
-    "owner": "Ksu_Antipova",
+    "owner": "Cheboksarov",
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }
